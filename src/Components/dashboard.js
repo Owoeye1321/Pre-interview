@@ -8,7 +8,7 @@ import axios from 'axios'
     const check = localStorage.clear()
     if(check){
       alert('logging out')
-      window.location.assign('https://hg-pre-interview-cd43cd.netlify.app/login')
+      
     }
   }
    useEffect(()=>{
