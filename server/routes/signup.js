@@ -17,43 +17,41 @@ const upload = multer({storage:storage})
 
 
 router.post('/',upload.single('file'),async (req, res) =>{
-    if(req.body){
-     const email = req.body.email
-
+    const data = JSON.parse(req.body.data)
+    if(data){
    const details = {
-          email:email
+          email:data.email,
+          password:data.password
    }
    const validationRule ={
       "email" :"required|email",
+      "password": "required|min:8"
   }
   validator(details, validationRule, {}, (err, status)=>{
      if(!status){
            console.log('An error has occured')
                  console.log(err)
-        res.json({
-           success:"false",
-             message:"Invalid details",
-          data:{err}
-     })
+        res.send('Password must be at least 8 character')
      }else{
                //checking if a user exist
-                 profile.exists({email:email}, (err, result)=>{
+                 profile.exists({email:data.email}, (err, result)=>{
                   if(result){
-                     res.send('exist')
+                     res.send('User exist')
                      console.log('file exist')
                   }else{
                         // fetch the file extension
                     const extensionName = path.extname(req.file.filename); 
                     const allowedExtension = ['.png','.jpg','.jpeg'];
                     if(!allowedExtension.includes(extensionName)){
-                        res.send('invalid')
+                        res.send('Invalid Image type')
                         console.log('invalid file type')
                     }else if(req.file.size > 50 * 1024){
-                        res.send('too_large')
+                        res.send('File too large')
                         console.log('File too large')
                     }else{
                         const profileDetails = new profile({
-                            email:req.body.email,
+                            email:data.email,
+                            password:data.password,
                             image:{
                                 data:fs.readFileSync(path.resolve('./public/' + req.file.filename)),
                                 contentType:"image/png"
@@ -63,7 +61,6 @@ router.post('/',upload.single('file'),async (req, res) =>{
                             res.send('success')
                             console.log('Signed up successfully', result)
                         }).catch((err)=>{
-                            res.send('unable_to_save')
                             console.log('Unable to save profile',err)
                         })
                     }
@@ -77,7 +74,7 @@ router.post('/',upload.single('file'),async (req, res) =>{
      })  
  
     }else{
-        res.send('empty')
+        res.send('Empty details')
         console.log('Invalid details')
     }
   
