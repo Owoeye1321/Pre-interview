@@ -14,7 +14,7 @@ function Forgetpassword() {
 
     const submitThisShit = async (e)=>{
         e.preventDefault()
-        const result = await axios.post('/forgetpassword',{
+        const result = await axios.post('/api/forgetpassword',{
             email:email
         })
         if(result.data === 'success'){
