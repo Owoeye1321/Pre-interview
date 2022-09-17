@@ -1,4 +1,5 @@
 {
+  "homepage":".",
   "name": "hg-group_user_authentication_app",
   "version": "0.1.0",
   "private": true,
