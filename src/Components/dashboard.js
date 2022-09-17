@@ -5,6 +5,7 @@ import axios from 'axios'
    const [userDetails, setUserDetails] = useState([])
 
    const LogOut = async()=>{
+    alert('logging out')
     const clear =  sessionStorage.clear()
     if(clear) window.location.assign('https://hg-pre-interview-cd43cd.netlify.app/login')
   }
