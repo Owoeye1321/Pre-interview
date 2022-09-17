@@ -7,7 +7,7 @@ import axios from 'axios'
    const LogOut = async()=>{
     const logUserOut = await axios.get('https://hg-pre-interview-task-1000.herokuapp.com/api/logout')
     if(logUserOut.data === "success"){
-      sessionStorage.clear()
+      localStorage.clear()
       window.location.assign('https://hg-pre-interview-cd43cd.netlify.app/login')
     }
   }
