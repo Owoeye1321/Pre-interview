@@ -4,6 +4,10 @@ import axios from 'axios'
  function Dashboard(){
    const [userDetails, setUserDetails] = useState([])
 
+   const LogOut = async()=>{
+    const clear =  sessionStorage.clear()
+    if(clear) window.location.assign('https://hg-pre-interview-cd43cd.netlify.app/login')
+  }
    useEffect(()=>{
     // alert('hello there i am trying to control the width of the screen')
     const response = async ()=>{
@@ -71,7 +75,8 @@ import axios from 'axios'
                           />
                         
                         </div>
-                        <strong>Email:{key.email}</strong>
+                        <strong>Email:{key.email}</strong><br></br>
+                        <strong  onClick={()=>{LogOut()}}>LogOut</strong>
                         </center>
                             </div>
                         )
