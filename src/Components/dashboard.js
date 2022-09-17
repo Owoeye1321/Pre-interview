@@ -79,7 +79,7 @@ import axios from 'axios'
                         
                         </div>
                         <strong>Email:{key.email}</strong><br></br>
-                        <strong  onClick={()=>{LogOut()}}>LogOut</strong>
+                        {/* <strong  onClick={()=>{LogOut()}}>LogOut</strong> */}
                         </center>
                             </div>
                         )
