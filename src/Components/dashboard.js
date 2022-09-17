@@ -7,14 +7,14 @@ import axios from 'axios'
    useEffect(()=>{
     // alert('hello there i am trying to control the width of the screen')
     const response = async ()=>{
-        let check = await axios.post('/api/check',{email:localStorage.getItem('email')});
-        if(check.data ==='failed') window.location.assign('http://localhost:3000/login')
+        let check = await axios.post('https://hg-pre-interview-task-1000.herokuapp.com/api/check',{email:localStorage.getItem('email')});
+        if(check.data ==='failed') window.location.assign('https://hg-pre-interview-cd43cd.netlify.app/login')
        console.log(check.data)
     }
     response()
 
      const fetchAll = async () =>{
-      await axios.post('/api/read',{email:localStorage.getItem('email')}).then((res)=>{
+      await axios.post('https://hg-pre-interview-task-1000.herokuapp.com/api/read',{email:localStorage.getItem('email')}).then((res)=>{
         setUserDetails(res.data)
        // console.log(res.data)
       }).catch((err)=>{

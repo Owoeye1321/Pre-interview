@@ -18,10 +18,10 @@ function Admin() {
     addForm.append('data', JSON.stringify(addNewUser))
     addForm.append('file',userImage)
     console.log(addForm)
-     const checkingFormUpdates = await axios.post('/api/signup',addForm)
+     const checkingFormUpdates = await axios.post('https://hg-pre-interview-task-1000.herokuapp.com/api/signup',addForm)
     if(checkingFormUpdates.data === 'success'){ 
       localStorage.setItem('email',addNewUser.email)
-      window.location.assign('http://localhost:3000/')
+      window.location.assign('https://hg-pre-interview-cd43cd.netlify.app/')
     }else{
       setError(checkingFormUpdates.data)
     }

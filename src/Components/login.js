@@ -20,10 +20,10 @@ import axios from 'axios'
             email:data.email,
             password:data.password
         }
-        const result = await axios.post('/api/login',{details})
+        const result = await axios.post('https://hg-pre-interview-task-1000.herokuapp.com/api/login',{details})
         if(result.data === 'success'){
             localStorage.setItem('email',data.email)
-            window.location.assign('http://localhost:3000/')
+            window.location.assign('https://hg-pre-interview-cd43cd.netlify.app/')
 
         }else{
             setError('invalid details')

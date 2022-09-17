@@ -14,7 +14,7 @@ function Forgetpassword() {
 
     const submitThisShit = async (e)=>{
         e.preventDefault()
-        const result = await axios.post('/api/forgetpassword',{
+        const result = await axios.post('https://hg-pre-interview-task-1000.herokuapp.com/api/forgetpassword',{
             email:email
         })
         if(result.data === 'success'){
