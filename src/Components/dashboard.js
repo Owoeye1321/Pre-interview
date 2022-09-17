@@ -5,8 +5,11 @@ import axios from 'axios'
    const [userDetails, setUserDetails] = useState([])
 
    const LogOut = async()=>{
-    const logUserOut = await axios.get('https://hg-pre-interview-task-1000.herokuapp.com/api/logout')
-    if(logUserOut.data === "success") localStorage.clear()
+    const check = localStorage.clear()
+    if(check){
+      alert('logging out')
+      window.location.assign('https://hg-pre-interview-cd43cd.netlify.app/login')
+    }
   }
    useEffect(()=>{
     // alert('hello there i am trying to control the width of the screen')
