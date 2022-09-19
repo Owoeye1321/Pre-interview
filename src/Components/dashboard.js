@@ -4,13 +4,14 @@ import axios from 'axios'
  function Dashboard(){
    const [userDetails, setUserDetails] = useState([])
 
-  //  const LogOut = async()=>{
-  //   const check = localStorage.clear()
-  //   if(check){
-  //     alert('logging out')
+   const LogOut = async()=>{
+    const check = localStorage.clear()
+    if(check){
+      alert('logging out')
       
-  //   }
-  // }
+    }
+  }
+  
    useEffect(()=>{
     // alert('hello there i am trying to control the width of the screen')
     const response = async ()=>{
@@ -31,7 +32,7 @@ import axios from 'axios'
      }
      fetchAll()
     
-},[])
+},[userDetails])
       return(
         <>
             <div>
@@ -79,7 +80,7 @@ import axios from 'axios'
                         
                         </div>
                         <strong>Email:{key.email}</strong><br></br>
-                        {/* <strong  onClick={()=>{LogOut()}}>LogOut</strong> */}
+                        <strong  onClick={()=>{LogOut()}}>LogOut</strong>
                         </center>
                             </div>
                         )
